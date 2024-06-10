@@ -12,7 +12,7 @@ def generate_data(n_samples, cluster_std, random_state):
     return X, y
 
 
-def display_data_settings(model):
+def display_data_settings():
     with st.sidebar.expander("Настройки данных", expanded=True):
         n_samples = st.slider("Количество точек", min_value=50, max_value=500, value=100, step=10, help="Количество точек в сгенерированных данных.")
         cluster_std = st.slider("Уровень дисперсии", min_value=0.1, max_value=5.0, value=1.0, step=0.1, help="Уровень шума в данных.")

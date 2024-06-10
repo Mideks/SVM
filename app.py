@@ -6,14 +6,9 @@ from visualization import plot_svm_data
 # Устанавливаем seed для numpy
 np.random.seed(42)
 
-# Переменная состояния для хранения текущих данных
-model = st.session_state.get("model", None)
-
 # Отображаем блоки настроек данных и предсказания
-model = display_data_settings(model)
+model = display_data_settings()
 user_point = display_prediction(model)
-
-#st.session_state.model = model
 
 # Визуализируем данные и разделяющую гиперплоскость
 fig, ax = plot_svm_data(model['X'], model['y'], model['w'], model['b'])
