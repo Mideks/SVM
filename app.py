@@ -13,7 +13,7 @@ model = st.session_state.get("model", None)
 model = display_data_settings(model)
 user_point = display_prediction(model)
 
-st.session_state.model = model
+#st.session_state.model = model
 
 # Визуализируем данные и разделяющую гиперплоскость
 fig, ax = plot_svm_data(model['X'], model['y'], model['w'], model['b'])

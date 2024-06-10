@@ -18,23 +18,21 @@ def display_data_settings(model):
         cluster_std = st.slider("Уровень дисперсии", min_value=0.1, max_value=5.0, value=1.0, step=0.1, help="Уровень шума в данных.")
         C = st.slider("Параметр регуляризации (C)", min_value=0.01, max_value=10.0, value=1.0, step=0.01, help="Параметр регуляризации в методе опорных векторов (SVM). Большие значения C приводят к меньшему запрещенному нарушению маржи, что может привести к более сложной модели.")
 
-        seed = st.session_state.get('random_state', random.randint(0, 100000))
+        seed = st.session_state.get('random_state', None)
+        # Кнопка для генерации новых данных
+        if st.button("Сгенерировать новые данные") or seed is None:
+            seed = random.randint(0, 100000)  # Генерируем новый сид
+            st.session_state.random_state = seed  # Сохраняем сид в сессии
+
         random_state = st.number_input("Сид", min_value=0, max_value=100000, value=seed, step=1, help="Сид для генерации случайных данных.")
 
-        # Кнопка для генерации новых данных
-        if st.button("Сгенерировать новые данные") or model is None:
-            # seed = random.randint(0, 100000)  # Генерируем новый сид
-            # st.session_state.random_state = seed  # Сохраняем сид в сессии
-            X, y = generate_data(n_samples, cluster_std, int(random_state))
+        X, y = generate_data(n_samples, cluster_std, int(random_state))
 
-            # Обучаем SVM
-            w, b = train_svm(X, y, C)
+        # Обучаем SVM
+        w, b = train_svm(X, y, C)
 
-            # Сохраняем текущие данные
-            model = {'X': X, 'y': y, 'w': w, 'b': b}
-
-        # Сохраняем сид для последующих сессий
-        st.session_state.random_state = int(random_state)
+        # Сохраняем текущие данные
+        model = {'X': X, 'y': y, 'w': w, 'b': b}
 
     return model
 
