@@ -48,6 +48,7 @@ def display_prediction(model):
         # Предсказание пользовательских данных
         if st.button("Предсказать"):
             predicted_label = predict(user_point, model['w'], model['b'])
-            st.write("Предсказанная метка класса:", predicted_label[0])
+            label = "синий (-1)" if predicted_label[0] == -1 else "красный (1)"
+            st.write("Предсказанная метка класса: ", label)
 
     return user_point
