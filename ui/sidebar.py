@@ -4,7 +4,7 @@ import numpy as np
 import streamlit as st
 
 from data_utils import get_dataset
-from svm import train_svm, predict
+from algorithms.svm import train_svm, predict
 
 
 def generate_data(n_samples, cluster_std, random_state):

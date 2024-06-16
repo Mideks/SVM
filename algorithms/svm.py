@@ -1,5 +1,5 @@
 import numpy as np
-from interior_point_method import kernel, solve_qp
+from algorithms.interior_point_method import kernel, solve_qp
 
 
 def train_svm(X, y, C):

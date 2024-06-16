@@ -1,8 +1,8 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
-from sidebar import display_data_settings, display_prediction
-from visualization import plot_svm_data
+from ui.sidebar import display_data_settings, display_prediction
+from ui.visualization import plot_svm_data
 
 # Устанавливаем seed для numpy
 np.random.seed(42)

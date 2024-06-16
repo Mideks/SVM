@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from data_utils import get_dataset
-from svm import train_svm, predict
+from algorithms.svm import train_svm, predict
 
 
 def plot_svm(X, y, w, b):
