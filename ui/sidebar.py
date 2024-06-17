@@ -3,8 +3,8 @@ import random
 import numpy as np
 import streamlit as st
 
-from data_utils import get_dataset
 from algorithms.svm import train_svm, predict
+from data_utils import get_dataset
 
 
 def generate_data(n_samples, cluster_std, random_state):
@@ -14,9 +14,12 @@ def generate_data(n_samples, cluster_std, random_state):
 
 def display_data_settings():
     with st.sidebar.expander("Настройки данных", expanded=True):
-        n_samples = st.slider("Количество точек", min_value=50, max_value=500, value=100, step=10, help="Количество точек в сгенерированных данных.")
-        cluster_std = st.slider("Уровень дисперсии", min_value=0.1, max_value=5.0, value=1.0, step=0.1, help="Уровень шума в данных.")
-        C = st.slider("Параметр регуляризации (C)", min_value=0.01, max_value=10.0, value=1.0, step=0.01, help="Параметр регуляризации в методе опорных векторов (SVM). Большие значения C приводят к меньшему запрещенному нарушению маржи, что может привести к более сложной модели.")
+        n_samples = st.slider("Количество точек", min_value=50, max_value=500, value=100, step=10,
+                              help="Количество точек в сгенерированных данных.")
+        cluster_std = st.slider("Уровень дисперсии", min_value=0.1, max_value=5.0, value=1.0, step=0.1,
+                                help="Уровень шума в данных.")
+        C = st.slider("Параметр регуляризации (C)", min_value=0.01, max_value=10.0, value=1.0, step=0.01,
+                      help="Параметр регуляризации в методе опорных векторов (SVM). Большие значения C приводят к меньшему запрещенному нарушению маржи, что может привести к более сложной модели.")
 
         seed = st.session_state.get('random_state', None)
         # Кнопка для генерации новых данных
@@ -24,7 +27,8 @@ def display_data_settings():
             seed = random.randint(0, 100000)  # Генерируем новый сид
             st.session_state.random_state = seed  # Сохраняем сид в сессии
 
-        random_state = st.number_input("Сид", min_value=0, max_value=100000, value=seed, step=1, help="Сид для генерации случайных данных.")
+        random_state = st.number_input("Сид", min_value=0, max_value=100000, value=seed, step=1,
+                                       help="Сид для генерации случайных данных.")
 
         X, y = generate_data(n_samples, cluster_std, int(random_state))
 

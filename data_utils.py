@@ -1,5 +1,6 @@
 from sklearn.datasets import make_blobs
 
+
 def get_dataset(n_samples=100, random_state=None, cluster_std=1.0):
     """
     Генерирует и возвращает набор данных для обучения SVM.

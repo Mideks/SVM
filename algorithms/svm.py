@@ -1,4 +1,5 @@
 import numpy as np
+
 from algorithms.interior_point_method import kernel, solve_qp
 
 

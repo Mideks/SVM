@@ -1,8 +1,10 @@
 import numpy as np
 
+
 def kernel(x1, x2):
     """Линейное ядро."""
     return np.dot(x1, x2)
+
 
 def solve_qp(K, y, C, tol=1e-4, max_passes=5):
     """

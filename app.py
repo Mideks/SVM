@@ -1,6 +1,7 @@
+import numpy as np
 import pandas as pd
 import streamlit as st
-import numpy as np
+
 from ui.sidebar import display_data_settings, display_prediction
 from ui.visualization import plot_svm_data
 
